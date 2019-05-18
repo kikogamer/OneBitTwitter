@@ -219,7 +219,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
       it 'returns right following' do
         get "/api/v1/users/#{user.id}/following?page=1"
-
+        
         expect(json).to eql(each_serialized(Api::V1::UserSerializer, user.following_users[0..14]))
       end
 
