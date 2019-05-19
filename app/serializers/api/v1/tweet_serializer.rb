@@ -22,9 +22,9 @@ module Api
       def likes_count
         object.votes_for.size
       end
-
+      
       def liked
-        object.liked_by @current_user
+        (current_user)? (current_user.liked? object) : false
       end
     end
   end
