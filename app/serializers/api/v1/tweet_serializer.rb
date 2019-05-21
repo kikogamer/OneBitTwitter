@@ -24,7 +24,7 @@ module Api
       end
       
       def liked
-        (current_user)? (current_user.liked? object) : false
+        (scope)? (scope.liked? object) : false
       end
     end
   end
