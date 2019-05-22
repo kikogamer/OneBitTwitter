@@ -27,6 +27,8 @@ services:
       - app-gems:/app-gems
     environment:
       ELASTICSEARCH_URL: elasticsearch:9200
+    stdin_open: true
+    tty: true
 
   jobs:
     depends_on:
