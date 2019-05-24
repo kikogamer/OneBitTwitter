@@ -11,7 +11,14 @@ module Api
         render json: { tweets: tweets_json, users: users_json }
       end
 
-      def autocomplete; end
+      def autocomplete
+        render json: Tweet.search(params[:query], {
+          
+          limit: 10,
+          load: false,
+          misspellings: {below: 5}
+        }).map(&:body)
+      end
     end
   end
 end
