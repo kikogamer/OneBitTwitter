@@ -6,11 +6,12 @@ module Api
 
       def create
         if current_user.follow(@user)
-          render json: { msg: 'User followed with success' }, status: :created
+          render json: @user, status: :created
         else
           render json: { errors: 'Problems to follow user' }, status: :unprocessable_entity
         end
-      
+      end
+
       def destroy
         if current_user.stop_following(@user)
           render json: { msg: 'User unfollowed with success' }
