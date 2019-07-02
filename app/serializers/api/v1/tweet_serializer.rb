@@ -24,7 +24,7 @@ module Api
       end
       
       def liked
-        (scope)? (scope.liked? object) : false
+        (defined? scope)? (scope.liked? object) : false
       end
     end
   end

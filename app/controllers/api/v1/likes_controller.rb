@@ -6,7 +6,7 @@ module Api
 
       def create
         if current_user.likes @tweet
-          render json: { msg: 'Liked with success' }, status: :created
+          render json: @tweet, status: :created
         else
           render json: { errors: 'Problems to like' }, status: :unprocessable_entity
         end

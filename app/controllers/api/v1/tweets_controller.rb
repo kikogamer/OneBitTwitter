@@ -4,11 +4,11 @@ module Api
       before_action :set_tweet, except: %i[create index]
       before_action :authenticate_user, except: [:show, :index]
       load_and_authorize_resource except: %i[index show]
-
+      
       def index
         user = User.find params[:user_id]
         @tweets = user.tweets.order("created_at DESC").paginate(page: params[:page] || 1)
-        render json: @tweets
+        render json: @tweets, scope: current_user
       end
 
       def create
