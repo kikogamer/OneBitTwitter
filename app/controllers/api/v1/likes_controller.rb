@@ -13,7 +13,11 @@ module Api
       end
 
       def destroy
-        @tweet.unliked_by current_user
+        if @tweet.unliked_by current_user
+          render json: @tweet
+        else
+          render json: { errors: 'Problems to dislike tweet' }, status: :unprocessable_entity
+        end
       end
 
       private
