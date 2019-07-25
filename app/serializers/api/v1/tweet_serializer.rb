@@ -6,7 +6,7 @@ module Api
       belongs_to :user
 
       def tweet_original
-        options = { each_serializer: Api::V1::TweetSerializer }
+        options = { each_serializer: Api::V1::TweetSerializer, scope: scope }
         ActiveModelSerializers::SerializableResource.new(object.tweet_original, options) if object.tweet_original
       end
 
